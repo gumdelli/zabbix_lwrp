@@ -23,11 +23,11 @@
 # SOFTWARE.
 
 case node['platform_family']
-when 'rhel'
+when 'rhel' or 'amazon'
 
   os_version = node['platform_version'].split('.').first
   remote_file "#{Chef::Config[:file_cache_path]}/zabbix_repo.rpm" do
-    source "http://repo.zabbix.com/zabbix/#{node['zabbix']['version']}/#{node['platform_family']}/#{os_version}/x86_64/zabbix-release-#{node['zabbix']['version']}-1.el#{os_version}.noarch.rpm"
+    source "http://repo.zabbix.com/zabbix/#{node['zabbix']['version']}/#{node['platform_family']}/6/x86_64/zabbix-release-#{node['zabbix']['version']}-1.el6.noarch.rpm"
     action :create
   end
 
